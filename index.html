@@ -1,0 +1,39 @@
+<html>
+<head>
+</head>
+<body>
+  <div style="width:100px">
+    <p id="firstpar">blue cat dog house apartment.blue cat dog house apartment.blue cat dog house apartment.blue cat dog house apartment.blue cat dog house apartment.</p>
+    <p id="secondpar">big sun sky green grass cool.</p>
+    <p id="thirdpar">large curtain sofa dog sofa.</p>
+  </div>
+</body>
+
+<script type="text/javascript">
+  //for highlighting, if every paragraph wrapped in a <p> tag had its own id
+  //and you knew the id of the paragraph of the character position start at
+  //mouse down, with the id of the paragraph of the character end position at
+  //mouse up, you might be able to store these details and display them as a "highlighted"
+  //text
+var getSelectedText = function () {
+  var selectedText = '';
+
+  if (window.getSelection() || document.getSelection()) {
+    selectedText = document.getSelection();
+  }
+
+  return selectedText;
+};
+
+window.addEventListener('mousedown', function(e) {
+  console.log("starting at an id of", e.target.id);
+});
+
+window.addEventListener('mouseup', function (e) {
+  var result = getSelectedText();
+  console.log("Ending at an id of", e.target.id);
+  console.log("start:", result.anchorOffset, "end:",result.focusOffset);
+});
+</script>
+
+</html>
